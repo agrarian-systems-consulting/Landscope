@@ -1,6 +1,6 @@
-# Landscope
+# Rai Disputa
 
-L’Alliance pour la Préservation des Forêts fournit des données et outils pour donner les moyens aux entreprises françaises de mieux protéger les forêts. Landscope est une cartographie de projets qui allient des objectifs de protection des ressources naturelles avec des objectifs de développement économique, et qui mobilisent une approche paysagère. Les projets identifiés sont le fruit d’un travail de revue de la littérature existante réalisé en Mai 2020. Cette application permet de visualiser ces projets.
+L
 
 ## Getting Started
 

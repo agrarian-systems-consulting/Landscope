@@ -93,7 +93,7 @@ export const ProjectsSidebar = ({
       </Menu>
 
       {state.loggedIn && (
-        <Button as={NavLink} to='/case/news' fluid color='yellow'>
+        <Button as={NavLink} to='/case/new' fluid color='teal'>
           Add new case
         </Button>
       )}

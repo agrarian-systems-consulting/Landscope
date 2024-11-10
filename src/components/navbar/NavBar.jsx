@@ -21,11 +21,11 @@ export const NavBar = () => {
           {state.loggedIn && (
             <Menu.Item>
               <Button
+                inverted
                 as={Link}
                 to='/case/new'
                 floated='right'
-                color='yellow'
-                content='New case'
+                content='Add a case'
               />
             </Menu.Item>
           )}
@@ -55,14 +55,14 @@ export const NavBar = () => {
             <Button
               basic
               inverted
-              content='Se connecter'
+              content='Sign in'
               as={NavLink}
               to='/connexion'
             />
             <Button
               basic
               inverted
-              content="S'inscrire"
+              content='Sign up'
               style={{ marginLeft: '0.5em' }}
               as={NavLink}
               to='/inscription'

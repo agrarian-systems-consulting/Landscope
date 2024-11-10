@@ -24,9 +24,9 @@ export default class Homepage extends Component {
             alt='logo'
             style={{ margin: 'auto', marginBottom: 60 }}
           /> */}
-          <Header as='h2' inverted>
-            Kdalalak Sulimutuk Institute
-            Land disputes cases database fir Timor-Leste
+          <Header as='h3' inverted>
+            Kdalalak Sulimutuk Institute <br />
+            Land disputes cases database for Timor-Leste
           </Header>
           <br />
           <p>Made the kind support of the TAPSA program</p>
