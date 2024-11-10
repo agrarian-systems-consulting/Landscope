@@ -15,19 +15,21 @@ export const NavBar = () => {
         </Menu.Item>
 
         <Fragment>
-          <Menu.Item name='Cases' as={NavLink} to='/cases' exact />
-          <Menu.Item name='Map' as={NavLink} to='/map' exact />
           <Menu.Item name='About' as={NavLink} to='/about' exact />
           {state.loggedIn && (
-            <Menu.Item>
-              <Button
-                inverted
-                as={Link}
-                to='/case/new'
-                floated='right'
-                content='Add a case'
-              />
-            </Menu.Item>
+            <>
+              <Menu.Item name='Map' as={NavLink} to='/map' exact />
+              <Menu.Item name='Cases' as={NavLink} to='/cases' exact />
+              <Menu.Item>
+                <Button
+                  inverted
+                  as={Link}
+                  to='/case/new'
+                  floated='right'
+                  content='Add a case'
+                />
+              </Menu.Item>
+            </>
           )}
         </Fragment>
 

@@ -86,14 +86,19 @@ function App() {
               <NavBar />
               <Container className='main'>
                 <Switch>
-                  <Route path='/map' component={Cartographie} />
-                  <Route path='/cases' exact component={Projets} />
+                  <ProtectedRoute path='/map' exact component={Cartographie} />
+                  {/* <Route path='/cases' exact component={Projets} /> */}
+                  <ProtectedRoute path='/cases' exact component={Projets} />
                   <ProtectedRoute
                     path='/case/new'
                     exact
                     component={ProjectsNew}
                   />
-                  <Route path='/cases/:id' component={ProjectDetailPage} />
+                  <ProtectedRoute
+                    path='/cases/:id'
+                    exact
+                    component={ProjectDetailPage}
+                  />
                   <Route path='/about' component={About} />
                   <Route path='/cgu' component={Cgu} />
                   <Route path='/inscription' component={SignUp} />

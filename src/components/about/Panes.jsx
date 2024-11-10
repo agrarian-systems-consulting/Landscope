@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext, Fragment } from 'react';
 import { TabPane, Tab, Button } from 'semantic-ui-react';
 import { NavLink, Link } from 'react-router-dom';
+import { UserContext } from '../../app/layout/App';
 
 const panes = [
   {
     menuItem: 'English',
     render: () => (
-      <TabPane attached={false}>
+      <TabPane attached={false} loggedIn>
         <h5>Mapping land conflicts in Timor Leste</h5>
         <p>
           Land disputes are a major challenge in many regions, especially for
@@ -129,6 +130,12 @@ const panes = [
   },
 ];
 
-const Panes = () => <Tab menu={{ pointing: true }} panes={panes} />;
+const Panes = () => {
+  const { state, dispatch } = useContext(UserContext);
+
+  return (
+    <Tab menu={{ pointing: true }} loggedIn={state.loggedIn} panes={panes} />
+  );
+};
 
 export default Panes;
