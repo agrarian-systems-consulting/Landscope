@@ -27,7 +27,7 @@ import {
   Breadcrumb,
   CommentGroup,
 } from 'semantic-ui-react';
-import { Formik } from 'formik';
+import { Formik, setNestedObjectValues } from 'formik';
 import * as Yup from 'yup';
 import { withRouter, Link } from 'react-router-dom';
 import { ProjectInnerForm } from './ProjectInnerForm';
@@ -127,10 +127,10 @@ class ProjectsNew extends Component {
     let str = s.serializeToString(node);
     let idProject = null;
     //console.log(str);
-    fetch('https://map.geomatick.com/geoserver/apf/wfs', {
+    fetch('https://map.geomatick.com/geoserver/raidisputa/wfs', {
       method: 'POST',
       headers: {
-        Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+        Authorization: 'Basic ' + btoa('raidisputags:3VC8cNt7p6xUiuR76'),
         'Content-Type': 'text/xml; charset=utf-8',
       },
       body: str,
@@ -139,6 +139,7 @@ class ProjectsNew extends Component {
       await response
         .text()
         .then(function (text) {
+          console.log(text);
           // Retrieve id to redirect to the right page
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(text, 'text/xml');
@@ -148,7 +149,7 @@ class ProjectsNew extends Component {
         })
         .then((response) => {
           if (response !== null) {
-            this.props.history.push(`/projets/${response}`);
+            this.props.history.push(`/cases/${response}`);
             // Cleanup
             arrDraw.length = 0;
           }
@@ -159,11 +160,6 @@ class ProjectsNew extends Component {
   render() {
     const validationSchema = Yup.object().shape({
       name: Yup.string().required(),
-      main_objective: Yup.string().required(),
-      country: Yup.string().required(),
-      area: Yup.number().positive().integer(),
-      year_start: Yup.number().positive().integer(),
-      year_end: Yup.number().positive().integer(),
     });
 
     return (
@@ -172,10 +168,10 @@ class ProjectsNew extends Component {
           <Grid.Column width={16}>
             <Breadcrumb>
               <Breadcrumb.Section as={Link} to='/projets'>
-                Projets
+                Cases
               </Breadcrumb.Section>
               <Breadcrumb.Divider />
-              <Breadcrumb.Section active>Ajouter un projet</Breadcrumb.Section>
+              <Breadcrumb.Section active>New case</Breadcrumb.Section>
             </Breadcrumb>
           </Grid.Column>
         </Grid.Row>
@@ -233,28 +229,32 @@ class ProjectsNew extends Component {
                         // Initializing values in Formik is mandatory
                         initialValues={{
                           name: '',
-                          country: '',
-                          city: '',
-                          area: '',
-                          main_objective: '',
-                          funds: '',
-                          year_start: '',
-                          year_end: '',
-                          /*current: '',*/
-                          contact: '',
-                          phone: '',
-                          mail: '',
-                          links: '',
-                          crit_formal_agreement: false,
-                          crit_int_commitment: false,
-                          crit_baseline: false,
-                          crit_landscape_plan_agreed: false,
-                          crit_landscape_plan_implemented: false,
-                          crit_governance: false,
-                          crit_parti_monitoring: false,
-                          crit_strenth_capacity: false,
+                          status: '',
+                          areatype: '',
+                          landtype: '',
+                          landlocation: '',
+                          sacredplaces: false,
+                          watersprings: false,
                           commodities: '',
+                          clanlinearity: '',
+                          yearstart: '',
                           actors: '',
+                          secondaryactors: '',
+                          legalstatusfarmerspov: '',
+                          ownershipprooffarmersp: '',
+                          conflicthistory: '',
+                          conflictarea: 0,
+                          impactedhouseholds: 0,
+                          impactedmen: 0,
+                          impactedwomen: 0,
+                          impactedkids: 0,
+                          impactedyouth: 0,
+                          impacteddisabled: 0,
+                          futureplans: '',
+                          govrespectslaw: false,
+                          plannedcompensation: '',
+                          ksisupportstart: '',
+                          ksisupporttype: '',
                         }}
                         // Handle form validation
                         validationSchema={validationSchema}
@@ -264,56 +264,80 @@ class ProjectsNew extends Component {
                           // Add form values to geometry
                           // TODO : Should be cleaned with setState si arrDraw est passé dans le local state
                           if (this.state.action === 'add') {
-                            arrDraw[0].set('name_project', values.name);
-                            arrDraw[0].set('country', values.country);
-                            arrDraw[0].set('city', values.city);
-                            arrDraw[0].set('area', values.area);
-                            arrDraw[0].set(
-                              'main_objective',
-                              values.main_objective
-                            );
-                            arrDraw[0].set('funds', values.funds);
-                            arrDraw[0].set('date_start', values.year_start);
-                            arrDraw[0].set('date_end', values.year_end);
-                            /*arrDraw[0].set('current',values.current);*/
-                            arrDraw[0].set('contact', values.contact);
-                            arrDraw[0].set('phone', values.phone);
-                            arrDraw[0].set('mail', values.mail);
-                            arrDraw[0].set('links', values.links);
-                            arrDraw[0].set(
-                              'crit_formal_agreement',
-                              values.crit_formal_agreement
-                            );
-                            arrDraw[0].set(
-                              'crit_int_commitment',
-                              values.crit_int_commitment
-                            );
-                            arrDraw[0].set(
-                              'crit_baseline',
-                              values.crit_baseline
-                            );
-                            arrDraw[0].set(
-                              'crit_landscape_plan_agreed',
-                              values.crit_landscape_plan_agreed
-                            );
-                            arrDraw[0].set(
-                              'crit_landscape_plan_implemented',
-                              values.crit_landscape_plan_implemented
-                            );
-                            arrDraw[0].set(
-                              'crit_governance',
-                              values.crit_governance
-                            );
-                            arrDraw[0].set(
-                              'crit_parti_monitoring',
-                              values.crit_parti_monitoring
-                            );
-                            arrDraw[0].set(
-                              'crit_strenth_capacity',
-                              values.crit_strenth_capacity
-                            );
+                            arrDraw[0].set('name', values.name);
+                            arrDraw[0].set('status', values.status);
+                            arrDraw[0].set('areatype', values.areatype);
+                            arrDraw[0].set('landtype', values.landtype);
+                            arrDraw[0].set('landlocation', values.landlocation);
+                            arrDraw[0].set('sacredplaces', values.sacredplaces);
+                            arrDraw[0].set('watersprings', values.watersprings);
                             arrDraw[0].set('commodities', values.commodities);
+                            arrDraw[0].set(
+                              'clanlinearity',
+                              values.clanlinearity
+                            );
+                            arrDraw[0].set(
+                              'clanlinearity',
+                              values.clanlinearity
+                            );
+                            arrDraw[0].set('yearstart', values.yearstart);
                             arrDraw[0].set('actors', values.actors);
+                            arrDraw[0].set(
+                              'secondaryactors',
+                              values.secondaryactors
+                            );
+                            arrDraw[0].set(
+                              'legalstatusfarmerspov',
+                              values.legalstatusfarmerspov
+                            );
+                            arrDraw[0].set(
+                              'ownershipprooffarmersp',
+                              values.ownershipprooffarmersp
+                            );
+                            arrDraw[0].set(
+                              'conflicthistory',
+                              values.conflicthistory
+                            );
+                            arrDraw[0].set('conflictarea', values.conflictarea);
+                            arrDraw[0].set(
+                              'impactedhouseholds',
+                              values.impactedhouseholds
+                            );
+                            arrDraw[0].set('impactedmen', values.impactedmen);
+                            arrDraw[0].set(
+                              'impactedwomen',
+                              values.impactedwomen
+                            );
+                            arrDraw[0].set(
+                              'impactedwomen',
+                              values.impactedwomen
+                            );
+                            arrDraw[0].set('impactedkids', values.impactedkids);
+                            arrDraw[0].set(
+                              'impactedyouth',
+                              values.impactedyouth
+                            );
+                            arrDraw[0].set(
+                              'impacteddisabled',
+                              values.impacteddisabled
+                            );
+                            arrDraw[0].set('futureplans', values.futureplans);
+                            arrDraw[0].set(
+                              'govrespectslaw',
+                              values.govrespectslaw
+                            );
+                            arrDraw[0].set(
+                              'plannedcompensation',
+                              values.plannedcompensation
+                            );
+                            arrDraw[0].set(
+                              'ksisupportstart',
+                              values.ksisupportstart
+                            );
+                            arrDraw[0].set(
+                              'ksisupporttype',
+                              values.ksisupporttype
+                            );
                           }
                           // Register the data and the geometry through WFS
                           this.doRegister();
@@ -343,12 +367,12 @@ class ProjectsNew extends Component {
                               </div>
 
                               {/* Uncomment following lines to debug form */}
-                              {/* <pre>
+                              <pre>
                                 values = {JSON.stringify(values, null, 2)}
                               </pre>
                               <pre>
                                 errors = {JSON.stringify(errors, null, 2)}
-                              </pre> */}
+                              </pre>
                             </Form>
                           );
                         }}

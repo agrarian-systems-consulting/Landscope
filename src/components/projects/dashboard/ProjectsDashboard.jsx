@@ -15,6 +15,7 @@ const Projets = (props) => {
     try {
       fetch(
         'https://map.geomatick.com/geoserver/apf/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=apf:projects&outputFormat=application/json',
+        //'https://map.geomatick.com/geoserver/raidisputa/wms?service=WMS&version=1.1.0&request=GetMap&layers=raidisputa%3Aprojects&bbox=-1.0%2C-1.0%2C0.0%2C0.0&width=768&height=768&srs=EPSG%3A4326&format=application/openlayers',
         {
           headers: {
             Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),

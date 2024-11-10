@@ -97,12 +97,18 @@ const formatGML = new OlFormatGML({
 const sourceVector = new OlVectorSource({
   loader: function (extent) {
     fetch(
-      'https://map.geomatick.com/geoserver/wfs?service=WFS&' +
-        'version=1.1.0&request=GetFeature&typename=apf:projects&' +
+      'https://map.geomatick.com/geoserver/raidisputa/wfs?service=WFS&' +
+        'version=1.1.0&request=GetFeature&typename=raidisputa:projects&' +
         'outputFormat=application/json&srsname=EPSG:3857&' +
         'bbox=' +
         extent.join(',') +
         ',EPSG:3857',
+      // 'https://map.geomatick.com/geoserver/wfs?service=WFS&' +
+      //   'version=1.1.0&request=GetFeature&typename=apf:projects&' +
+      //   'outputFormat=application/json&srsname=EPSG:3857&' +
+      //   'bbox=' +
+      //   extent.join(',') +
+      //   ',EPSG:3857',
       {
         headers: {
           Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
