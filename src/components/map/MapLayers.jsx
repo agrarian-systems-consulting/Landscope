@@ -55,14 +55,14 @@ const MapboxSatellite = new OlTileLayer({
 const projection = getProjection('EPSG:3857');
 const projectionExtent = projection.getExtent();
 const originTopLeft = getTopLeft(projectionExtent);
-const resolutions = new Array(31);
-const matrixIds = new Array(31);
+const resolutions = new Array(21);
+const matrixIds = new Array(21);
 const size = getWidth(projectionExtent) / 256;
-for (var z = 0; z < 31; ++z) {
-  matrixIds[z] = z.toString();
+for (var z = 0; z < 21; ++z) {
+  matrixIds[z] = z.toString(); //"EPSG:3857:" + z;
   resolutions[z] = size / Math.pow(2, z);
 }
-const maxLevels = 31;
+const maxLevels = 21;
 const tileGrid = (levels = maxLevels) =>
   new WMTSTileGrid({
     origin: originTopLeft,
@@ -70,14 +70,14 @@ const tileGrid = (levels = maxLevels) =>
     matrixIds: matrixIds.slice(0, levels + 1),
   });
 const sourceIgnOrtho = new OlWMTSSource({
-  url: 'https://wxs.ign.fr/pratique/geoportail/wmts',
+  crossOrigin: 'anonymous',
+  url: 'https://data.geopf.fr/wmts?',
   layer: 'ORTHOIMAGERY.ORTHOPHOTOS',
   matrixSet: 'PM',
   format: 'image/jpeg',
   projection: projection,
-  tileGrid: tileGrid(31),
+  tileGrid: tileGrid(21),
   style: 'normal',
-  attributions: '',
 });
 const coucheIgnOrtho = new OlTileLayer({
   opacity: 1.0,
@@ -88,7 +88,7 @@ const coucheIgnOrtho = new OlTileLayer({
 });
 
 const formatGML = new OlFormatGML({
-  featureNS: 'https://map.geomatick.com/apf',
+  featureNS: 'https://map.geomatick.com/raidisputa',
   featureType: 'projects',
   srsName: 'EPSG:3857',
   type: 'Point',
@@ -97,21 +97,15 @@ const formatGML = new OlFormatGML({
 const sourceVector = new OlVectorSource({
   loader: function (extent) {
     fetch(
-      // 'https://map.geomatick.com/geoserver/raidisputa/wfs?service=WFS&' +
-      //   'version=1.1.0&request=GetFeature&typename=raidisputa:projects&' +
-      //   'outputFormat=application/json&srsname=EPSG:3857&' +
-      //   'bbox=' +
-      //   extent.join(',') +
-      //   ',EPSG:3857',
       'https://map.geomatick.com/geoserver/wfs?service=WFS&' +
-        'version=1.1.0&request=GetFeature&typename=apf:projects&' +
+        'version=1.1.0&request=GetFeature&typename=raidisputa:projects&' +
         'outputFormat=application/json&srsname=EPSG:3857&' +
         'bbox=' +
         extent.join(',') +
         ',EPSG:3857',
       {
         headers: {
-          Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+          Authorization: 'Basic ' + btoa('raidisputags:3VC8cNt7p6xUiuR76'),
         },
       }
     ).then(async (response) => {

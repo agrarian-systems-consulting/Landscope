@@ -105,7 +105,6 @@ class ProjectsNew extends Component {
     arrDraw.length = 0;
     vectorDraw.getSource().clear();
   };
-
   // Handle registration through WFS
   doRegister = async () => {
     const formatWFS = new OlFormatWFS();
@@ -126,7 +125,7 @@ class ProjectsNew extends Component {
     const s = new XMLSerializer();
     let str = s.serializeToString(node);
     let idProject = null;
-    //console.log(str);
+
     fetch('https://map.geomatick.com/geoserver/raidisputa/wfs', {
       method: 'POST',
       headers: {
@@ -160,6 +159,7 @@ class ProjectsNew extends Component {
   render() {
     const validationSchema = Yup.object().shape({
       name: Yup.string().required(),
+      status: Yup.string().required(),
     });
 
     return (
@@ -237,7 +237,7 @@ class ProjectsNew extends Component {
                           watersprings: false,
                           commodities: '',
                           clanlinearity: '',
-                          yearstart: '',
+                          yearstart: 0,
                           actors: '',
                           secondaryactors: '',
                           legalstatusfarmerspov: '',
@@ -253,7 +253,7 @@ class ProjectsNew extends Component {
                           futureplans: '',
                           govrespectslaw: false,
                           plannedcompensation: '',
-                          ksisupportstart: '',
+                          ksisupportstart: 0,
                           ksisupporttype: '',
                         }}
                         // Handle form validation
@@ -291,8 +291,8 @@ class ProjectsNew extends Component {
                               values.legalstatusfarmerspov
                             );
                             arrDraw[0].set(
-                              'ownershipprooffarmersp',
-                              values.ownershipprooffarmersp
+                              'ownershipprooffarmerspov',
+                              values.ownershipprooffarmerspov
                             );
                             arrDraw[0].set(
                               'conflicthistory',

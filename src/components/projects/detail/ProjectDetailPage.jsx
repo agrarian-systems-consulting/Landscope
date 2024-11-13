@@ -24,11 +24,23 @@ import {
   Icon,
   Button,
   List,
+  Table,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { ProjectCriterias } from './ProjectCriterias';
 import CommoditiesList from './CommoditiesList';
+import { ProjectStatusLabel } from './ProjectStatusLabel';
+import { AreaType } from './AreaType';
+import { LandType } from './LandType';
+import { LandLocation } from './LandLocation';
+import SacredPlace from './SacredPlace';
+import WaterSprings from './WaterSprings';
+import { ClanLinearity } from './ClanLinearity';
+import { Actors } from './Actors';
+import { SecondaryActors } from './SecondaryActors';
+import { LegalStatusFarmersPov } from './LegalStatusFarmersPov';
+import { OwnershipProofFarmerPov } from './OwnershipProofFarmerPov';
 
 const ProjectDetailPage = ({ match }) => {
   const idProject = match.params.id;
@@ -40,12 +52,12 @@ const ProjectDetailPage = ({ match }) => {
   const sourceOneProject = new OlVectorSource({
     loader: function (extent) {
       fetch(
-        'https://map.geomatick.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=apf:projects&featureId=' +
+        'https://map.geomatick.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=raidisputa:projects&featureId=' +
           idProject +
           '&outputFormat=application/json&srsname=EPSG:3857',
         {
           headers: {
-            Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+            Authorization: 'Basic ' + btoa('raidisputags:3VC8cNt7p6xUiuR76'),
           },
         }
       ).then(async (response) => {
@@ -93,12 +105,12 @@ const ProjectDetailPage = ({ match }) => {
 
     try {
       fetch(
-        'https://map.geomatick.com/geoserver/apf/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=apf:projects&outputFormat=application/json&featureID=' +
+        'https://map.geomatick.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=raidisputa:projects&outputFormat=application/json&featureID=' +
           idProject +
           '',
         {
           headers: {
-            Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+            Authorization: 'Basic ' + btoa('raidisputags:3VC8cNt7p6xUiuR76'),
           },
         }
       ).then(async (response) => {
@@ -119,7 +131,7 @@ const ProjectDetailPage = ({ match }) => {
           </Breadcrumb.Section>
           <Breadcrumb.Divider />
           <Breadcrumb.Section active>
-            {_.capitalize(project.name_project)}
+            {_.capitalize(project.name)}
           </Breadcrumb.Section>
         </Breadcrumb>
       </Grid.Column>
@@ -130,30 +142,60 @@ const ProjectDetailPage = ({ match }) => {
             <Segment attached='top'>
               <h5>Case description</h5>
             </Segment>
+
             <Segment attached='bottom'>
               <h5>Case title</h5>
-              <p>{project.name_project}</p>
+              <p>{project.name}</p>
+              {project.yearstart ? (
+                <>
+                  <h5>Bainhira mak konflitu rai hahú?</h5>
+                  <p>{project.yearstart}</p>
+                </>
+              ) : (
+                ''
+              )}
 
-              <h5>History</h5>
-              <p>{project.main_objective}</p>
+              <h5>Status husi konflitu rai ne'e</h5>
+              <ProjectStatusLabel status={project.status} />
 
-              <h5>Main crops</h5>
-              <Label.Group>
-                {project.commodities && (
-                  <CommoditiesList commodities={project.commodities} />
-                )}
-              </Label.Group>
-
-              <h5>Approche paysagère</h5>
-              <ProjectCriterias project={project} />
+              {project.conflicthistory && (
+                <>
+                  <h5>Istória husi konflitu rai</h5>
+                  <p>{project.conflicthistory}</p>
+                </>
+              )}
             </Segment>
           </Segment.Group>
           <Segment.Group>
             <Segment attached='top'>
-              <h5>Informations complémentaires</h5>
+              <h5>Additional information</h5>
             </Segment>
             <Segment attached='bottom'>
-              <Fragment>
+              {project.areatype && <AreaType type={project.areatype} />}
+              {project.landtype && <LandType type={project.landtype} />}
+              <Label.Group>
+                {project.commodities && (
+                  <>
+                    <h5>Produtu prinsipál/ai-han prinsipál ne'ebé prodús</h5>
+                    <CommoditiesList commodities={project.commodities} />
+                  </>
+                )}
+              </Label.Group>
+              {project.landlocation && (
+                <LandLocation landlocation={project.landlocation} />
+              )}
+
+              {project.legalstatusfarmerspov && (
+                <LegalStatusFarmersPov value={project.legalstatusfarmerspov} />
+              )}
+
+              {project.ownershipprooffarmerspov && (
+                <OwnershipProofFarmerPov
+                  value={project.ownershipprooffarmerspov}
+                />
+              )}
+
+              {/* <Fragment>
                 <h5>Contact</h5>
                 {project.contact ? (
                   <Fragment>
@@ -166,9 +208,9 @@ const ProjectDetailPage = ({ match }) => {
                 ) : (
                   'Non renseigné'
                 )}
-              </Fragment>
+              </Fragment> */}
 
-              <Fragment>
+              {/* <Fragment>
                 <h5>Liens externes</h5>
                 {project.links ? (
                   <Fragment>
@@ -183,42 +225,122 @@ const ProjectDetailPage = ({ match }) => {
                 ) : (
                   'Non renseignés'
                 )}
-              </Fragment>
+              </Fragment> */}
             </Segment>
           </Segment.Group>
         </Grid.Column>
         <Grid.Column width={6}>
           <Segment.Group>
             <Segment attached='top'>
-              <h5>Localisation</h5>
+              <h5>Location</h5>
             </Segment>
             <Segment attached='bottom'>
               <div id='map' style={{ width: '100%', height: '300px' }}></div>
-              <h5>Surface concernée</h5>
-              <p>
-                {project.area ? (
-                  <Fragment>
-                    {parseInt(project.area).toLocaleString('fr')} ha
-                  </Fragment>
-                ) : (
-                  'Non renseignée'
-                )}
-              </p>
 
-              <h5>Suku</h5>
-              <p>
-                {project.country ? (
-                  <Fragment>
-                    <Label.Group>
-                      {project.country.split(',').map((cou) => (
-                        <Label basic>{cou}</Label>
-                      ))}
-                    </Label.Group>
-                  </Fragment>
-                ) : (
-                  'Non renseignés'
+              {project.conflictarea > 0 && (
+                <>
+                  <h5>
+                    Rai nia luan (totál hira, totál hektares) husi rai konflitu
+                  </h5>
+                  <p>
+                    <Fragment>
+                      {parseInt(project.conflictarea).toLocaleString('fr')} ha
+                    </Fragment>
+                  </p>
+                </>
+              )}
+
+              <SacredPlace value={project.sacredplaces} />
+              <WaterSprings value={project.waterspring} />
+              <ClanLinearity value={project.clanlinearity} />
+
+              {project.impactedhouseholds > 0 && (
+                <>
+                  <h5>
+                    Totál populasaun ne'ebé afeitadu/involve (uma-kain hira)
+                  </h5>
+                  <p>
+                    <Fragment>
+                      {parseInt(project.impactedhouseholds).toLocaleString(
+                        'fr'
+                      )}
+                    </Fragment>
+                  </p>
+                </>
+              )}
+              <Table celled selectable>
+                {project.impactedmen > 0 && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <h5>Mane</h5>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>
+                        {parseInt(project.impactedmen).toLocaleString('fr')}
+                      </p>
+                    </Table.Cell>
+                  </Table.Row>
                 )}
-              </p>
+                {project.impactedwomen > 0 && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <h5>Feto</h5>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Fragment>
+                        <p>
+                          {' '}
+                          {parseInt(project.impactedwomen).toLocaleString('fr')}
+                        </p>
+                      </Fragment>
+                    </Table.Cell>
+                  </Table.Row>
+                )}
+                {project.impactedkids > 0 && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <h5>Labarik</h5>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Fragment>
+                        <p>
+                          {parseInt(project.impactedkids).toLocaleString('fr')}
+                        </p>
+                      </Fragment>
+                    </Table.Cell>
+                  </Table.Row>
+                )}
+                {project.impactedyouth > 0 && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <h5>Joven</h5>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Fragment>
+                        <p>
+                          {parseInt(project.impactedyouth).toLocaleString('fr')}
+                        </p>
+                      </Fragment>
+                    </Table.Cell>
+                  </Table.Row>
+                )}
+                {project.impacteddisabled > 0 && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <h5>Ema ho defisiénsia</h5>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>
+                        <Fragment>
+                          {parseInt(project.impacteddisabled).toLocaleString(
+                            'fr'
+                          )}
+                        </Fragment>
+                      </p>
+                    </Table.Cell>
+                  </Table.Row>
+                )}
+              </Table>
             </Segment>
           </Segment.Group>
           <Segment.Group>
@@ -226,16 +348,24 @@ const ProjectDetailPage = ({ match }) => {
               <h5>Stakeholders</h5>
             </Segment>
             <Segment attached='bottom'>
-              {project.actors ? (
+              {project.actors && (
                 <Fragment>
+                  <h5>Identifikasuan ba parte sira ne'ebé envolve</h5>
+                  <Actors value={project.actors} />
+                </Fragment>
+              )}
+
+              {project.secondaryactors && (
+                <>
+                  <h5>
+                    Parte interesada sira seluk ne'ebé envolve iha kazu ne'e
+                  </h5>
                   <List bulleted>
-                    {project.actors.split(',').map((actor) => (
-                      <List.Item basic>{actor}</List.Item>
+                    {project.secondaryactors.split(',').map((actor) => (
+                      <SecondaryActors value={actor} />
                     ))}
                   </List>
-                </Fragment>
-              ) : (
-                'Non renseignés'
+                </>
               )}
             </Segment>
           </Segment.Group>
@@ -249,7 +379,7 @@ const ProjectDetailPage = ({ match }) => {
           </Segment.Group> */}
         </Grid.Column>
         {/* Uncomment following line to debug */}
-        {/* <pre>project = {JSON.stringify(project, null, 2)}</pre> */}
+        <pre>project = {JSON.stringify(project, null, 2)}</pre>
       </Grid.Row>
     </Grid>
   );

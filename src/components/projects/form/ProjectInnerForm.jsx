@@ -279,7 +279,7 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
-        label='Estatutu legál rai-nian? Tuir  kamponezes sira'
+        label='Estatutu legál rai-nian? Tuir kamponezes sira'
         name='legalstatusfarmerspov'
         id='legalstatusfarmerspov'
         fluid
@@ -321,9 +321,9 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
-        label='Prova kona-ba direitu nain ba rai - Tuir  kamponezes sira '
-        name='ownershipprooffarmersp'
-        id='ownershipprooffarmersp'
+        label='Prova kona-ba direitu nain ba rai - Tuir kamponezes sira '
+        name='ownershipprooffarmerspov'
+        id='ownershipprooffarmerspov'
         fluid
         selection
         multiple={false}

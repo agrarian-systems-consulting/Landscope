@@ -14,15 +14,23 @@ const Projets = (props) => {
   useEffect(() => {
     try {
       fetch(
-        'https://map.geomatick.com/geoserver/apf/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=apf:projects&outputFormat=application/json',
-        //'https://map.geomatick.com/geoserver/raidisputa/wms?service=WMS&version=1.1.0&request=GetMap&layers=raidisputa%3Aprojects&bbox=-1.0%2C-1.0%2C0.0%2C0.0&width=768&height=768&srs=EPSG%3A4326&format=application/openlayers',
+        // 'https://map.geomatick.com/geoserver/apf/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=apf:projects&outputFormat=application/json',
+        // {
+        //   headers: {
+        //     Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+        //   },
+        // }
+
+        // 'https://map.geomatick.com/geoserver/raidisputa/wfs?service=WFS&version=1.1.0&request=GetFeatures&typename=raidisputa:projects&outputFormat=application/json',
+        'https://map.geomatick.com/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typename=raidisputa:projects&outputFormat=application/json',
         {
           headers: {
-            Authorization: 'Basic ' + btoa('apfgs:8hN5q7qmk3U5KX'),
+            Authorization: 'Basic ' + btoa('raidisputags:3VC8cNt7p6xUiuR76'),
           },
         }
       ).then(async (response) => {
         const data = await response.json();
+
         setProjects(data.features);
         setIsLoading(false);
       });
