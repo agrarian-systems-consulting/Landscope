@@ -5,7 +5,7 @@ import SemanticField from '../../../app/common/form/SemanticField';
 export const ProjectInnerForm = (values) => {
   return (
     <Fragment>
-      <SemanticField label='Case name' name='name' component={Form.Input} />
+      <SemanticField label='Titulu kazu' name='name' component={Form.Input} />
       <SemanticField
         label="Status husi konflitu rai ne'e"
         name='status'
@@ -16,14 +16,19 @@ export const ProjectInnerForm = (values) => {
         component={Form.Dropdown}
         options={[
           {
-            key: 'ongoing_without_tribunal',
-            value: 'ongoing_without_tribunal',
-            text: "Kazu ne'e la'o hela  - maibé la tama tribunal",
+            key: 'ongoing_without_tribunal_level_community',
+            value: 'ongoing_without_tribunal_level_community',
+            text: "Kazu ne'e la'o hela  - maibé la registu",
+          },
+          {
+            key: 'ongoing_without_tribunal_at_police',
+            value: 'ongoing_without_tribunal_at_police',
+            text: "Kazu ne'e la'o hela - sidauk registu",
           },
           {
             key: 'ongoing_tribunal_open_case',
             value: 'ongoing_tribunal_open_case',
-            text: "Kazu ne'e la'o hela/kazu nakloke, iha tribunal",
+            text: "Kazu ne'e la'o hela - registu ona",
           },
           {
             key: 'solved',
@@ -33,7 +38,7 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
-        label='Área agrikultura ka rezidensiál?'
+        label='Funsaun Área'
         name='areatype'
         id='areatype'
         fluid
@@ -92,6 +97,11 @@ export const ProjectInnerForm = (values) => {
             value: 'hills',
             text: 'Rai lolon',
           },
+          {
+            key: 'mixed_area',
+            value: 'mixed_area',
+            text: 'Rai mixtura (rai lolon no tetuk)',
+          },
         ]}
       />
       <SemanticField
@@ -144,7 +154,7 @@ export const ProjectInnerForm = (values) => {
         component={Form.Dropdown}
         options={[
           { key: 'coffee', value: 'coffee', text: 'Kafé' },
-          { key: 'rice', value: 'rice', text: 'Foos' },
+          { key: 'rice', value: 'rice', text: 'Foos/hare' },
           { key: 'corn', value: 'corn', text: 'Batar' },
           { key: 'vegetables', value: 'vegetables', text: 'Modo-tahan' },
           { key: 'other_crop', value: 'other_crop', text: 'Ai-han sira seluk' },
@@ -152,7 +162,7 @@ export const ProjectInnerForm = (values) => {
           { key: 'none', value: 'none', text: 'Laiha buat ruma' },
         ]}
       />
-      <SemanticField
+      {/* <SemanticField
         label='Area/rai nee tama ba parte patrilinial/matrilinial?'
         name='clanlinearity'
         id='clanlinearity'
@@ -172,27 +182,27 @@ export const ProjectInnerForm = (values) => {
             text: 'Patrilinial',
           },
         ]}
-      />
+      /> */}
       <SemanticField
-        label='Bainhira mak konflitu rai hahú?'
+        label='Horibainhira mak konflitu rai hahú?'
         name='yearstart'
         placeholder='2018'
         component={Form.Input}
       />
       <SemanticField
-        label="Identifikasuan ba parte sira ne'ebé envolve"
+        label='Identifika disputantes sira'
         name='actors'
         id='actors'
         fluid
         selection
-        multiple={false}
+        multiple={true}
         clearable
         component={Form.Dropdown}
         options={[
           {
             key: 'btw_persons',
             value: 'btw_persons',
-            text: 'Entre individuál/uma -kain',
+            text: 'Entre individu/uma -kain',
           },
           {
             key: 'btw_communities',
@@ -210,6 +220,11 @@ export const ProjectInnerForm = (values) => {
             text: 'Entre komunidade no kompania privadu',
           },
           {
+            key: 'btw_individual_and_state_with_company',
+            value: 'btw_individual_and_state_with_company',
+            text: 'Entre individu/uma Kain no estadu, no kompania privadu',
+          },
+          {
             key: 'btw_community_and_former_king',
             value: 'btw_community_and_former_king',
             text: 'Entre komonudade & liurai',
@@ -217,7 +232,7 @@ export const ProjectInnerForm = (values) => {
           {
             key: 'btw_community_and_former_landlord',
             value: 'btw_community_and_former_landlord',
-            text: 'Entre komunidade no rai nia nain husi tempu Portugés nia ukun ka tempu indonézia',
+            text: 'entre komunidade no ocupante iha tempo Chineza, Portugés, Japanez, indonézia',
           },
           {
             key: 'btw_community_and_veterans',
@@ -232,7 +247,7 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
-        label="Parte interesada sira seluk ne'ebé envolve iha kazu ne'e"
+        label="Parte tersera/pihak ketiga sira ne'ebé envolve iha kazu ne'e "
         name='secondaryactors'
         id='secondaryactors'
         fluid
@@ -267,6 +282,21 @@ export const ProjectInnerForm = (values) => {
             text: 'Politik nain/ parlamentu',
           },
           {
+            key: 'political_party',
+            value: 'political_party',
+            text: 'Partidu politiku',
+          },
+          {
+            key: 'church',
+            value: 'church',
+            text: 'Igreja',
+          },
+          {
+            key: 'local_king',
+            value: 'local_king',
+            text: 'Liurai',
+          },
+          {
             key: 'veterans',
             value: 'veterans',
             text: 'Veteranus sira',
@@ -276,10 +306,15 @@ export const ProjectInnerForm = (values) => {
             value: 'brokers',
             text: 'Brokers sira',
           },
+          {
+            key: 'mafia',
+            value: 'mafia',
+            text: 'Arte marsiais',
+          },
         ]}
       />
       <SemanticField
-        label='Estatutu legál rai-nian? Tuir kamponezes sira'
+        label='Define statutu propriedade rai ho kategoria hirak iha karaik tuir komunidade/kampozes'
         name='legalstatusfarmerspov'
         id='legalstatusfarmerspov'
         fluid
@@ -306,7 +341,7 @@ export const ProjectInnerForm = (values) => {
           {
             key: 'private_land',
             value: 'private_land',
-            text: 'Rai estadu',
+            text: 'Rai privado',
           },
           {
             key: 'public_domain',
@@ -321,7 +356,7 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
-        label='Prova kona-ba direitu nain ba rai - Tuir kamponezes sira '
+        label='Klasifika tipu direitu tuir komunidade/kampozes'
         name='ownershipprooffarmerspov'
         id='ownershipprooffarmerspov'
         fluid
@@ -338,17 +373,17 @@ export const ProjectInnerForm = (values) => {
           {
             key: 'right_of_use_portuguese',
             value: 'right_of_use_portuguese',
-            text: 'Direitu atu uza - Tempu Portugés/Aforamentu',
+            text: 'Direitu ba uza - Tempu Portugés/Aforamentu',
           },
           {
             key: 'right_of_use_indonesian_economical_activity',
             value: 'right_of_use_indonesian_economical_activity',
-            text: 'Direitu atu uza - Tempu Indonézia (ba atividade ekonomia) Hak Guna usaha',
+            text: 'Direitu ba uza - Tempu Indonézia (ba atividade ekonomia) Hak Guna usaha',
           },
           {
             key: 'right_of_use_indonesian_house',
             value: 'right_of_use_indonesian_house',
-            text: 'Direitu atu uza - Tempu Indonézia (hodi harii uma) Hak guna Bangunan',
+            text: 'Direitu ba uza - Tempu Indonézia (hodi harii uma) Hak guna Bangunan',
           },
           {
             key: 'land_title_portuguese',
@@ -394,7 +429,7 @@ export const ProjectInnerForm = (values) => {
         component={Form.Input}
       />
       <SemanticField
-        label="Totál populasaun ne'ebé afeitadu/involve (uma-kain hira)"
+        label="Totál populasaun ne'ebé afeitadu"
         name='impactedhouseholds'
         component={Form.Input}
       />
@@ -408,11 +443,11 @@ export const ProjectInnerForm = (values) => {
         name='impactedwomen'
         component={Form.Input}
       />
-      <SemanticField
+      {/* <SemanticField
         label="Totál populasaun ne'ebé afeitadu/involve, ema sira ne;ebé hela iha área ne'e (labarik)"
         name='impactedkids'
         component={Form.Input}
-      />
+      /> */}
       <SemanticField
         label="Totál populasaun ne'ebé afeitadu/involve entre tinan 17 - 35 ne'ebé hela iha área ne'e (joven)"
         name='impactedyouth'
@@ -424,7 +459,7 @@ export const ProjectInnerForm = (values) => {
         component={Form.Input}
       />
       <SemanticField
-        label="Planu utilizasaun ba rai iha futuru  - parte sira ne'ebé reklama (estadu) "
+        label="Planu utilizasaun ba rai iha futuru  - parte sira ne'ebé interesada "
         name='futureplans'
         id='futureplans'
         fluid
@@ -474,13 +509,13 @@ export const ProjectInnerForm = (values) => {
           },
         ]}
       />
-      <SemanticField
+      {/* <SemanticField
         label="Governu tuir lei (lei ba rai ne'ebé vigora iha TL) ? "
         name='govrespectslaw'
         component={Form.Checkbox}
-      />
+      /> */}
       <SemanticField
-        label='Keta iha planu ruma ba kompensasaun?'
+        label='Iha ona planu kompensasaun ruma?'
         name='plannedcompensation'
         id='plannedcompensation'
         fluid

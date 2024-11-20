@@ -144,7 +144,7 @@ const ProjectDetailPage = ({ match }) => {
             </Segment>
 
             <Segment attached='bottom'>
-              <h5>Case title</h5>
+              <h5>Titulu kazu</h5>
               <p>{project.name}</p>
               {project.yearstart ? (
                 <>
@@ -296,7 +296,7 @@ const ProjectDetailPage = ({ match }) => {
                     </Table.Cell>
                   </Table.Row>
                 )}
-                {project.impactedkids > 0 && (
+                {/* {project.impactedkids > 0 && (
                   <Table.Row>
                     <Table.Cell>
                       <h5>Labarik</h5>
@@ -309,7 +309,7 @@ const ProjectDetailPage = ({ match }) => {
                       </Fragment>
                     </Table.Cell>
                   </Table.Row>
-                )}
+                )} */}
                 {project.impactedyouth > 0 && (
                   <Table.Row>
                     <Table.Cell>
@@ -350,15 +350,18 @@ const ProjectDetailPage = ({ match }) => {
             <Segment attached='bottom'>
               {project.actors && (
                 <Fragment>
-                  <h5>Identifikasuan ba parte sira ne'ebé envolve</h5>
-                  <Actors value={project.actors} />
+                  <h5>Identifika disputantes sira</h5>
+                  {project.actors &&
+                    project.actors.split(',').map((actor) => {
+                      return <Actors value={project.actor} />;
+                    })}
                 </Fragment>
               )}
 
               {project.secondaryactors && (
                 <>
                   <h5>
-                    Parte interesada sira seluk ne'ebé envolve iha kazu ne'e
+                    Parte tersera/pihak ketiga sira ne'ebé envolve iha kazu ne'e
                   </h5>
                   <List bulleted>
                     {project.secondaryactors.split(',').map((actor) => (
@@ -379,7 +382,7 @@ const ProjectDetailPage = ({ match }) => {
           </Segment.Group> */}
         </Grid.Column>
         {/* Uncomment following line to debug */}
-        <pre>project = {JSON.stringify(project, null, 2)}</pre>
+        {/* <pre>project = {JSON.stringify(project, null, 2)}</pre> */}
       </Grid.Row>
     </Grid>
   );
