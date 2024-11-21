@@ -214,9 +214,9 @@ class TheMap extends Component {
 
     // Retrieve feature data to display in side panel
     let project_id = feature.getId();
-    let name = feature.get('name_project');
-    let main_objective = feature.get('main_objective');
-    let country = feature.get('country');
+    let name = feature.get('name');
+    let main_objective = feature.get('conflicthistory');
+    let municipality = feature.get('municipality');
     let commodities = feature.get('commodities');
 
     // Display data in side panel
@@ -224,7 +224,7 @@ class TheMap extends Component {
       panelContent: {
         project_id: project_id,
         name: name,
-        country: country,
+        municipality: municipality,
         summary: main_objective,
         commodities: commodities,
       },
@@ -290,7 +290,7 @@ class TheMap extends Component {
                 {this.state.panelContent.commodities && (
                   <Grid.Row>
                     <Grid.Column>
-                      <h5>Filières concernées</h5>
+                      <h5>Main produtions</h5>
                       <CommoditiesList
                         commodities={this.state.panelContent.commodities}
                       />
@@ -299,7 +299,7 @@ class TheMap extends Component {
                 )}
                 <Grid.Row>
                   <Grid.Column>
-                    <h5>Résumé</h5>
+                    <h5>Summary</h5>
                     {_.truncate(this.state.panelContent.summary, {
                       length: 500, // maximum 30 characters
                       separator: /,?\.* +/, // separate by spaces, including preceding commas and periods
@@ -310,7 +310,7 @@ class TheMap extends Component {
                 <Grid.Row>
                   <Grid.Column>
                     <Button size='small' onClick={this.closeInfo}>
-                      Fermer
+                      Close
                     </Button>
                     <Button
                       size='small'
@@ -318,7 +318,7 @@ class TheMap extends Component {
                       as={NavLink}
                       to={`/cases/${this.state.panelContent.project_id}`}
                     >
-                      En savoir plus
+                      Learn more
                     </Button>
                   </Grid.Column>
                 </Grid.Row>

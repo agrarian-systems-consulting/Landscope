@@ -29,14 +29,14 @@ export const ProjectsSidebar = ({
       <Menu vertical fluid>
         <Menu.Item>
           <Input
-            placeholder='Titre...'
+            placeholder='Search...'
             className='icon'
             icon='search'
             onChange={(e) => setSearch(e.target.value)}
           />
         </Menu.Item>
       </Menu>
-
+      {/* 
       <Menu vertical fluid>
         <Menu.Item
           active={filterCategory === ''}
@@ -62,9 +62,9 @@ export const ProjectsSidebar = ({
             </Menu.Item>
           );
         })}
-      </Menu>
+      </Menu> */}
 
-      <Menu vertical fluid>
+      {/* <Menu vertical fluid>
         <Menu.Item
           active={filterCategory === ''}
           onClick={(e) => {
@@ -90,7 +90,7 @@ export const ProjectsSidebar = ({
             </Menu.Item>
           );
         })}
-      </Menu>
+      </Menu> */}
 
       {state.loggedIn && (
         <Button as={NavLink} to='/case/new' fluid color='teal'>
