@@ -1,12 +1,13 @@
 import React from 'react';
 
-const JuridicSituationClaiming = ({ value }) => {
+const JuridicSituationOtherPov = ({ value }) => {
   switch (value) {
     case 'land_registration_gov_program':
       return (
         <>
           <h5>
-            Justifica situasaun juridika kona ba rai tuir komunidade/kampozes
+            Justifica situasaun juridika kona ba rai tuir parte sira
+            seluk/interesada
           </h5>
           <p>Levantamentu/rejistru kadastral</p>
         </>
@@ -15,7 +16,8 @@ const JuridicSituationClaiming = ({ value }) => {
       return (
         <>
           <h5>
-            Justifica situasaun juridika kona ba rai tuir komunidade/kampozes
+            Justifica situasaun juridika kona ba rai tuir parte sira
+            seluk/interesada
           </h5>
           <p>Posse duradoura</p>
         </>
@@ -24,7 +26,8 @@ const JuridicSituationClaiming = ({ value }) => {
       return (
         <>
           <h5>
-            Justifica situasaun juridika kona ba rai tuir komunidade/kampozes
+            Justifica situasaun juridika kona ba rai tuir parte sira
+            seluk/interesada
           </h5>
           <p>Uzu kapiaun espesial</p>
         </>
@@ -33,7 +36,8 @@ const JuridicSituationClaiming = ({ value }) => {
       return (
         <>
           <h5>
-            Justifica situasaun juridika kona ba rai tuir komunidade/kampozes
+            Justifica situasaun juridika kona ba rai tuir parte sira
+            seluk/interesada
           </h5>
           <p>Laihan</p>
         </>
@@ -43,4 +47,5 @@ const JuridicSituationClaiming = ({ value }) => {
       break;
   }
 };
-export default JuridicSituationClaiming;
+
+export default JuridicSituationOtherPov;

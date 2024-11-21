@@ -42,10 +42,11 @@ import { SecondaryActors } from './SecondaryActors';
 import { LegalStatusOtherPov } from './LegalStatusOtherPov';
 import { LegalStatusFarmersPov } from './LegalStatusFarmersPov';
 import { OwnershipProofFarmerPov } from './OwnershipProofFarmerPov';
+import { OwnershipProofOtherPov } from './OwnershipProofOtherPov';
 import Postu from './Postu';
 import CulturalEvidence from './CulturalEvidence';
 import JuridicSituationClaiming from './JuridicSituationClaiming';
-import { OwnershipProofOtherPov } from './OwnershipProofOtherPov';
+import JuridicSituationOtherPov from './JuridicSituationOtherPov';
 
 const ProjectDetailPage = ({ match }) => {
   const idProject = match.params.id;
@@ -200,9 +201,9 @@ const ProjectDetailPage = ({ match }) => {
                 />
               )}
 
-              {project.juridicsituationclaiming && (
+              {project.juridicsituationclaming && (
                 <JuridicSituationClaiming
-                  value={project.juridicsituationclaiming}
+                  value={project.juridicsituationclaming}
                 />
               )}
 
@@ -210,9 +211,15 @@ const ProjectDetailPage = ({ match }) => {
                 <LegalStatusOtherPov value={project.legalstatusotherpov} />
               )}
 
-              {project.ownershipproofotherpov && (
+              {project.ownershipproffotherpov && (
                 <OwnershipProofOtherPov
-                  value={project.ownershipproofotherpov}
+                  value={project.ownershipproffotherpov}
+                />
+              )}
+
+              {project.juridicsituationotherpov && (
+                <JuridicSituationOtherPov
+                  value={project.juridicsituationotherpov}
                 />
               )}
 
@@ -256,9 +263,9 @@ const ProjectDetailPage = ({ match }) => {
               <h5>Location</h5>
             </Segment>
             {/* TODO: VERIFIER QUE CA MARCHE */}
-            {project.postu && <Postu postu={project.postu} />}
             <Segment attached='bottom'>
               <div id='map' style={{ width: '100%', height: '300px' }}></div>
+              {project.postu && <Postu postu={project.postu} />}
 
               {project.conflictarea > 0 && (
                 <>
@@ -275,11 +282,10 @@ const ProjectDetailPage = ({ match }) => {
 
               {/* <SacredPlace value={project.sacredplaces} /> */}
 
-              {/* TODO:A Tester */}
-              {project.culturalevidence && (
-                <CulturalEvidence value={project.culturalevidence} />
-              )}
               <WaterSprings value={project.waterspring} />
+              {project.cultural_evidence && (
+                <CulturalEvidence value={project.cultural_evidence} />
+              )}
               {/* <ClanLinearity value={project.clanlinearity} /> */}
 
               {project.impactedhouseholds > 0 && (

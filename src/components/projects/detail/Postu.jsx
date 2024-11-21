@@ -82,9 +82,14 @@ const postuArray = [
 ];
 
 const Postu = ({ postu }) => {
-  postuArray.forEach((i) => {
+  return postuArray.map((i) => {
+    console.log(i.value);
     if (i.value === postu) {
-      return i.text;
+      return (
+        <>
+          <h5>Postu administrativu</h5> <p key={i.key}>{i.text}</p>
+        </>
+      );
     }
   });
 };

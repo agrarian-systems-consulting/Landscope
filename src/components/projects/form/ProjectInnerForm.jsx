@@ -232,8 +232,8 @@ export const ProjectInnerForm = (values) => {
 
       <SemanticField
         label='Iha ka lai, evidensia kultural ka seluk ruma neebe eziste iha propriedad rai ne?'
-        name='culturalevidence'
-        id='culturalevidence'
+        name='cultural_evidence'
+        id='cultural_evidence'
         fluid
         selection
         multiple={true}
@@ -543,8 +543,8 @@ export const ProjectInnerForm = (values) => {
       />
       <SemanticField
         label='Justifica situasaun juridika kona ba rai tuir komunidade/kampozes'
-        name='juridicsituationclaiming'
-        id='juridicsituationclaiming'
+        name='juridicsituationclaming'
+        id='juridicsituationclaming'
         fluid
         selection
         multiple={false}
@@ -620,8 +620,8 @@ export const ProjectInnerForm = (values) => {
 
       <SemanticField
         label='Klasifika tipu direitu tuir parte sira seluk/interesada'
-        name='ownershipproofotherpov'
-        id='ownershipproofotherpov'
+        name='ownershipproffotherpov'
+        id='ownershipproffotherpov'
         fluid
         selection
         multiple={false}
@@ -852,18 +852,12 @@ export const ProjectInnerForm = (values) => {
       <Divider section />
 
       <SemanticField
-        label='Bainhira mak KSI hahú fó ninia apoiu?'
-        name='ksisupportstart'
-        placeholder='2024'
-        component={Form.Input}
-      />
-      <SemanticField
         label="Tipu apoiu ne'ebé KSI fó (advokasia, suporta legál, halibur istória ba kazu)"
         name='ksisupporttype'
         id='ksisupporttype'
         fluid
         selection
-        multiple={false}
+        multiple={true}
         component={Form.Dropdown}
         options={[
           {
@@ -892,6 +886,12 @@ export const ProjectInnerForm = (values) => {
             text: 'Sensibilisasaun komunidade',
           },
         ]}
+      />
+      <SemanticField
+        label='Bainhira mak KSI hahú fó ninia apoiu?'
+        name='ksisupportstart'
+        placeholder='2024'
+        component={Form.Input}
       />
       {/* <Header color='teal' as={'h5'}>
         Approche paysagère

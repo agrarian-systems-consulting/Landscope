@@ -7,15 +7,15 @@ const CulturalEvidence = ({ value }) => {
       {value.split(',').map((evidence) => {
         switch (evidence) {
           case 'sacred_house':
-            return <Label>Uma-lisan</Label>;
+            return <Label key={evidence}>Uma-lisan</Label>;
           case 'graveyard':
-            return <Label>Semeteriu</Label>;
+            return <Label key={evidence}>Semeteriu</Label>;
           case 'ritual':
-            return <Label>Fatin halo ritual</Label>;
+            return <Label key={evidence}>Fatin halo ritual</Label>;
           case 'sacred_spring':
-            return <Label>Bee matan lulik</Label>;
+            return <Label key={evidence}>Bee matan lulik</Label>;
           case 'nothing':
-            return <Label>Laiha buat ruma</Label>;
+            return <Label key={evidence}>Laiha buat ruma</Label>;
           default:
             return '';
         }

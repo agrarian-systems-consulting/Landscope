@@ -236,7 +236,7 @@ class ProjectsNew extends Component {
                           landtype: '',
                           landlocation: '',
                           // sacredplaces: false,
-                          culturalevidence: '',
+                          cultural_evidence: '',
                           watersprings: false,
                           commodities: '',
                           // clanlinearity: '',
@@ -245,9 +245,9 @@ class ProjectsNew extends Component {
                           secondaryactors: '',
                           legalstatusfarmerspov: '',
                           ownershipprooffarmerspov: '',
-                          juridicsituationclaiming: '',
+                          juridicsituationclaming: '',
                           legalstatusotherpov: '',
-                          ownershipproofotherpov: '',
+                          ownershipproffotherpov: '',
                           juridicsituationotherpov: '',
                           conflicthistory: '',
                           conflictarea: 0,
@@ -280,8 +280,8 @@ class ProjectsNew extends Component {
                             arrDraw[0].set('landlocation', values.landlocation);
                             // arrDraw[0].set('sacredplaces', values.sacredplaces);
                             arrDraw[0].set(
-                              'culturalevidence',
-                              values.culturalevidence
+                              'cultural_evidence',
+                              values.cultural_evidence
                             );
                             arrDraw[0].set('watersprings', values.watersprings);
                             arrDraw[0].set('commodities', values.commodities);
@@ -307,16 +307,16 @@ class ProjectsNew extends Component {
                             );
 
                             arrDraw[0].set(
-                              'juridicsituationclaiming',
-                              values.juridicsituationclaiming
+                              'juridicsituationclaming',
+                              values.juridicsituationclaming
                             );
                             arrDraw[0].set(
                               'legalstatusotherpov',
                               values.legalstatusotherpov
                             );
                             arrDraw[0].set(
-                              'ownershipprooffarmerspov',
-                              values.ownershipproofotherpov
+                              'ownershipproffotherpov',
+                              values.ownershipproffotherpov
                             );
                             arrDraw[0].set(
                               'juridicsituationotherpov',
@@ -396,12 +396,12 @@ class ProjectsNew extends Component {
                               </div>
 
                               {/* Uncomment following lines to debug form */}
-                              <pre>
+                              {/* <pre>
                                 values = {JSON.stringify(values, null, 2)}
                               </pre>
                               <pre>
                                 errors = {JSON.stringify(errors, null, 2)}
-                              </pre>
+                              </pre> */}
                             </Form>
                           );
                         }}
