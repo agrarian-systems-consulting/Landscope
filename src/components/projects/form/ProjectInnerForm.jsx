@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Form, Header } from 'semantic-ui-react';
+import { Divider, Form } from 'semantic-ui-react';
 import SemanticField from '../../../app/common/form/SemanticField';
 
 export const ProjectInnerForm = (values) => {
@@ -38,6 +38,95 @@ export const ProjectInnerForm = (values) => {
         ]}
       />
       <SemanticField
+        label='Postu administrativu'
+        name='postu'
+        id='postu'
+        fluid
+        selection
+        multiple={false}
+        component={Form.Dropdown}
+        options={[
+          { key: 'aileu', value: 'aileu', text: 'Aileu' },
+          { key: 'laulara', value: 'laulara', text: 'Laulara' },
+          { key: 'liquidoe', value: 'liquidoe', text: 'Liquidoe' },
+          { key: 'remexio', value: 'remexio', text: 'Remexio' },
+          { key: 'ainaro', value: 'ainaro', text: 'Ainaro' },
+          { key: 'hatu builico', value: 'hatu builico', text: 'Hatu Builico' },
+          { key: 'hatu udo', value: 'hatu udo', text: 'Hatu Udo' },
+          { key: 'maubisse', value: 'maubisse', text: 'Maubisse' },
+          { key: 'baguia', value: 'baguia', text: 'Baguia' },
+          { key: 'baucau', value: 'baucau', text: 'Baucau' },
+          { key: 'laga', value: 'laga', text: 'Laga' },
+          { key: 'quelicai', value: 'quelicai', text: 'Quelicai' },
+          { key: 'vemasse', value: 'vemasse', text: 'Vemasse' },
+          { key: 'venilale', value: 'venilale', text: 'Venilale' },
+          { key: 'atabae', value: 'atabae', text: 'Atabae' },
+          { key: 'balibo', value: 'balibo', text: 'Balibo' },
+          { key: 'bobonaro', value: 'bobonaro', text: 'Bobonaro' },
+          { key: 'cailaco', value: 'cailaco', text: 'Cailaco' },
+          { key: 'lolotoe', value: 'lolotoe', text: 'Lolotoe' },
+          { key: 'maliana', value: 'maliana', text: 'Maliana' },
+          { key: 'fatululik', value: 'fatululik', text: 'Fatululik' },
+          { key: 'fatumean', value: 'fatumean', text: 'Fatumean' },
+          { key: 'fohoren', value: 'fohoren', text: 'Fohoren' },
+          { key: 'mape_zumalai', value: 'mape_zumalai', text: 'Mape-Zumalai' },
+          { key: 'maucatar', value: 'maucatar', text: 'Maucatar' },
+          { key: 'suai', value: 'suai', text: 'Suai' },
+          { key: 'tilomar', value: 'tilomar', text: 'Tilomar' },
+          { key: 'atauro', value: 'atauro', text: 'Ataúro' },
+          { key: 'cristo rei', value: 'cristo rei', text: 'Cristo Rei' },
+          { key: 'dom_aleixo', value: 'dom_aleixo', text: 'Dom Aleixo' },
+          { key: 'metinaro', value: 'metinaro', text: 'Metinaro' },
+          { key: 'nain feto', value: 'nain feto', text: 'Nain Feto' },
+          { key: 'vera cruz', value: 'vera cruz', text: 'Vera Cruz' },
+          { key: 'atsabe', value: 'atsabe', text: 'Atsabe' },
+          { key: 'ermera', value: 'ermera', text: 'Ermera' },
+          { key: 'hatulia', value: 'hatulia', text: 'Hatulia' },
+          {
+            key: 'letefoho_ermera',
+            value: 'letefoho_ermera',
+            text: 'Letefoho (Ermera)',
+          },
+          { key: 'railaco', value: 'railaco', text: 'Railaco' },
+          { key: 'iliomar', value: 'iliomar', text: 'Iliomar' },
+          { key: 'lautém', value: 'lautém', text: 'Lautém' },
+          { key: 'los palos', value: 'los palos', text: 'Los palos' },
+          { key: 'luro', value: 'luro', text: 'Luro' },
+          { key: 'tutuala', value: 'tutuala', text: 'Tutuala' },
+          { key: 'bazartete', value: 'bazartete', text: 'Bazartete' },
+          { key: 'liquiçá', value: 'liquiçá', text: 'Liquiçá' },
+          { key: 'maubara', value: 'maubara', text: 'Maubara' },
+          { key: 'loes', value: 'loes', text: 'Loes' },
+          {
+            key: 'barique_natarbora',
+            value: 'barique_natarbora',
+            text: 'Barique/Natarbora',
+          },
+          { key: 'laclo', value: 'laclo', text: 'Laclo' },
+          { key: 'laclubar', value: 'laclubar', text: 'Laclubar' },
+          { key: 'laleia', value: 'laleia', text: 'Laleia' },
+          { key: 'manatuto', value: 'manatuto', text: 'Manatuto' },
+          { key: 'soibada', value: 'soibada', text: 'Soibada' },
+          { key: 'alas', value: 'alas', text: 'Alas' },
+          { key: 'fatuberliu', value: 'fatuberliu', text: 'Fatuberliu' },
+          { key: 'same', value: 'same', text: 'Same' },
+          { key: 'turiscai', value: 'turiscai', text: 'Turiscai' },
+          { key: 'nitibe', value: 'nitibe', text: 'Nitibe' },
+          { key: 'oesilo', value: 'oesilo', text: 'Oesilo' },
+          {
+            key: 'pante macassar',
+            value: 'pante macassar',
+            text: 'Pante Macassar',
+          },
+          { key: 'passabe', value: 'passabe', text: 'Passabe' },
+          { key: 'lacluta', value: 'lacluta', text: 'Lacluta' },
+          { key: 'ossu', value: 'ossu', text: 'Ossu' },
+          { key: 'viqueque', value: 'viqueque', text: 'Viqueque' },
+          { key: 'watu_carbau', value: 'watu_carbau', text: 'Watu-Carbau' },
+          { key: 'watu_lari', value: 'watu_lari', text: 'Watu-Lari' },
+        ]}
+      />
+      <SemanticField
         label='Funsaun Área'
         name='areatype'
         id='areatype'
@@ -65,6 +154,16 @@ export const ProjectInnerForm = (values) => {
             key: 'areatype_transition',
             value: 'areatype_transition',
             text: 'Área agrikuktura no iha prosesu tranzisaun ba área rezidensiál ',
+          },
+          {
+            key: 'grazing',
+            value: 'grazing',
+            text: 'Fatin hakiak animal',
+          },
+          {
+            key: 'sacred',
+            value: 'sacred',
+            text: 'Rai protejidu',
           },
         ]}
       />
@@ -130,18 +229,42 @@ export const ProjectInnerForm = (values) => {
           },
         ]}
       />
-      <Form.Group>
-        <SemanticField
+
+      <SemanticField
+        label='Iha ka lai, evidensia kultural ka seluk ruma neebe eziste iha propriedad rai ne?'
+        name='culturalevidence'
+        id='culturalevidence'
+        fluid
+        selection
+        multiple={true}
+        clearable
+        component={Form.Dropdown}
+        options={[
+          { key: 'sacred_house', value: 'sacred_house', text: 'Uma-lisan' },
+          { key: 'gravery', value: 'gravery', text: 'Semeteriu' },
+          { key: 'ritual', value: 'ritual', text: 'Fatin halo ritual' },
+          {
+            key: 'sacred_spring',
+            value: 'sacred_spring',
+            text: 'Bee matan lulik',
+          },
+          {
+            key: 'nothing',
+            value: 'nothing',
+            text: 'Laiha buat ruma',
+          },
+        ]}
+      />
+      {/* <SemanticField
           label='Keta iha uma-lisan ka semetériu'
           name='sacredplaces'
           component={Form.Checkbox}
-        />
-        <SemanticField
-          label='Keta iha bee-matan?'
-          name='watersprings'
-          component={Form.Checkbox}
-        />
-      </Form.Group>
+        /> */}
+      <SemanticField
+        label='iha ka lai bee-matan ruma ba produsaun ka seluk?'
+        name='watersprings'
+        component={Form.Checkbox}
+      />
 
       <SemanticField
         label="Produtu prinsipál/ai-han prinsipál ne'ebé prodús"
@@ -313,6 +436,7 @@ export const ProjectInnerForm = (values) => {
           },
         ]}
       />
+      <Divider section />
       <SemanticField
         label='Define statutu propriedade rai ho kategoria hirak iha karaik tuir komunidade/kampozes'
         name='legalstatusfarmerspov'
@@ -417,6 +541,180 @@ export const ProjectInnerForm = (values) => {
           },
         ]}
       />
+      <SemanticField
+        label='Justifica situasaun juridika kona ba rai tuir komunidade/kampozes'
+        name='juridicsituationclaiming'
+        id='juridicsituationclaiming'
+        fluid
+        selection
+        multiple={false}
+        component={Form.Dropdown}
+        options={[
+          {
+            key: 'land_registration_gov_program',
+            value: 'land_registration_gov_program',
+            text: 'Levantamentu/rejistru kadastral',
+          },
+          {
+            key: 'ltm_ancestors_land',
+            value: 'ltm_ancestors_land',
+            text: 'Posse duradoura',
+          },
+          {
+            key: 'ltm_deplaced',
+            value: 'ltm_deplaced',
+            text: 'Uzu kapiaun espesial',
+          },
+          {
+            key: 'nothing',
+            value: 'nothing',
+            text: 'Laihan',
+          },
+        ]}
+      />
+
+      <Divider section />
+
+      <SemanticField
+        label='Define statutu propriedade rai ho kategoria hirak iha karaik tuir  - Tuir parte sira seluk/interesada'
+        name='legalstatusotherpov'
+        id='legalstatusotherpov'
+        fluid
+        selection
+        multiple={false}
+        clearable
+        component={Form.Dropdown}
+        options={[
+          {
+            key: 'customary_land',
+            value: 'customary_land',
+            text: 'Rai lisan',
+          },
+          {
+            key: 'community_land',
+            value: 'community_land',
+            text: 'Rai komunidade (inklui rai husi lisan/étniku oioin)',
+          },
+          {
+            key: 'community_protection_zone',
+            value: 'community_protection_zone',
+            text: 'Zona protesaun komunidade',
+          },
+          {
+            key: 'private_land',
+            value: 'private_land',
+            text: 'Rai privado',
+          },
+          {
+            key: 'public_domain',
+            value: 'public_domain',
+            text: 'Rai estadu dominu publiku',
+          },
+          {
+            key: 'private_state_land',
+            value: 'private_state_land',
+            text: 'Rai estadu dominu privado (ospitál, eskola, plantasaun, empreza estadu, nst)',
+          },
+        ]}
+      />
+
+      <SemanticField
+        label='Klasifika tipu direitu tuir parte sira seluk/interesada'
+        name='ownershipproofotherpov'
+        id='ownershipproofotherpov'
+        fluid
+        selection
+        multiple={false}
+        clearable
+        component={Form.Dropdown}
+        options={[
+          {
+            key: 'recognized_inheritance',
+            value: 'recognized_inheritance',
+            text: 'Direita informais/eransas',
+          },
+          {
+            key: 'right_of_use_portuguese',
+            value: 'right_of_use_portuguese',
+            text: 'Direitu ba uza - Tempu Portugés/Aforamentu',
+          },
+          {
+            key: 'right_of_use_indonesian_economical_activity',
+            value: 'right_of_use_indonesian_economical_activity',
+            text: 'Direitu ba uza - Tempu Indonézia (ba atividade ekonomia) Hak Guna usaha',
+          },
+          {
+            key: 'right_of_use_indonesian_house',
+            value: 'right_of_use_indonesian_house',
+            text: 'Direitu ba uza - Tempu Indonézia (hodi harii uma) Hak guna Bangunan',
+          },
+          {
+            key: 'land_title_portuguese',
+            value: 'land_title_portuguese',
+            text: 'Titulu ba rai - Tempu Portugés/Propriedade perfeita',
+          },
+          {
+            key: 'land_title_indonesian',
+            value: 'land_title_indonesian',
+            text: 'Titulu ba rai - Tempu Indonézia/Hak Milik',
+          },
+          {
+            key: 'land_title_in_process_after_independance',
+            value: 'land_title_in_process_after_independance',
+            text: 'Titulu ba rai/prosesu, depois independésia (Numeru identifikasaun parcela)',
+          },
+          {
+            key: 'land_title_after_independance',
+            value: 'land_title_after_independance',
+            text: 'Titulu ba rai - depois independénsia (Sertifikadu rai)',
+          },
+          {
+            key: 'state_land',
+            value: 'state_land',
+            text: 'Rai estadu (dominu privado + dominu públiku)',
+          },
+          {
+            key: 'none',
+            value: 'none',
+            text: 'La iha buat ruma',
+          },
+        ]}
+      />
+
+      <SemanticField
+        label='Justifica situasaun juridika kona ba rai tuir parte sira seluk/interesada'
+        name='juridicsituationotherpov'
+        id='juridicsituationotherpov'
+        fluid
+        selection
+        multiple={false}
+        component={Form.Dropdown}
+        options={[
+          {
+            key: 'land_registration_gov_program',
+            value: 'land_registration_gov_program',
+            text: 'Levantamentu/rejistru kadastral',
+          },
+          {
+            key: 'ltm_ancestors_land',
+            value: 'ltm_ancestors_land',
+            text: 'Posse duradoura',
+          },
+          {
+            key: 'ltm_deplaced',
+            value: 'ltm_deplaced',
+            text: 'Uzu kapiaun espesial',
+          },
+          {
+            key: 'nothing',
+            value: 'nothing',
+            text: 'Laihan',
+          },
+        ]}
+      />
+
+      <Divider section />
+
       <SemanticField
         rows={10}
         label='Istória husi konflitu rai - kontestu (husi tempu Portugés, tempu Indonézia, ka depois ukun an - tempu atuál'
@@ -550,6 +848,9 @@ export const ProjectInnerForm = (values) => {
           },
         ]}
       />
+
+      <Divider section />
+
       <SemanticField
         label='Bainhira mak KSI hahú fó ninia apoiu?'
         name='ksisupportstart'

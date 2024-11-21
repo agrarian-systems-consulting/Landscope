@@ -7,19 +7,19 @@ const CommoditiesList = ({ commodities }) => {
       {commodities.split(',').map((commodity) => {
         switch (commodity) {
           case 'coffee':
-            return <Label>Kafé</Label>;
+            return <Label key={commodity}>Kafé</Label>;
           case 'rice':
-            return <Label>Foos</Label>;
+            return <Label key={commodity}>Foos</Label>;
           case 'corn':
-            return <Label>Batar</Label>;
+            return <Label key={commodity}>Batar</Label>;
           case 'vegetables':
-            return <Label>Modo-tahan</Label>;
+            return <Label key={commodity}>Modo-tahan</Label>;
           case 'other_crop':
-            return <Label>Ai-han sira seluk</Label>;
+            return <Label key={commodity}>Ai-han sira seluk</Label>;
           case 'livestock':
-            return <Label>Animál</Label>;
+            return <Label key={commodity}>Animál</Label>;
           case 'none':
-            return <Label>Laiha buat ruma</Label>;
+            return <Label key={commodity}>Laiha buat ruma</Label>;
           default:
             return '';
         }

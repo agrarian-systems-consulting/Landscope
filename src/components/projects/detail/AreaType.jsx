@@ -30,6 +30,20 @@ export const AreaType = ({ type }) => {
           <p>Área agrikuktura no iha prosesu tranzisaun ba área rezidensiál</p>
         </>
       );
+    case 'grazing':
+      return (
+        <>
+          <h5>Funsaun Área</h5>
+          <p>Fatin hakiak animal</p>
+        </>
+      );
+    case 'sacred':
+      return (
+        <>
+          <h5>Funsaun Área</h5>
+          <p>Rai protejidu</p>
+        </>
+      );
 
     default:
       break;

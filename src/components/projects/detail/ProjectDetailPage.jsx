@@ -39,8 +39,13 @@ import WaterSprings from './WaterSprings';
 import { ClanLinearity } from './ClanLinearity';
 import { Actors } from './Actors';
 import { SecondaryActors } from './SecondaryActors';
+import { LegalStatusOtherPov } from './LegalStatusOtherPov';
 import { LegalStatusFarmersPov } from './LegalStatusFarmersPov';
 import { OwnershipProofFarmerPov } from './OwnershipProofFarmerPov';
+import Postu from './Postu';
+import CulturalEvidence from './CulturalEvidence';
+import JuridicSituationClaiming from './JuridicSituationClaiming';
+import { OwnershipProofOtherPov } from './OwnershipProofOtherPov';
 
 const ProjectDetailPage = ({ match }) => {
   const idProject = match.params.id;
@@ -195,6 +200,22 @@ const ProjectDetailPage = ({ match }) => {
                 />
               )}
 
+              {project.juridicsituationclaiming && (
+                <JuridicSituationClaiming
+                  value={project.juridicsituationclaiming}
+                />
+              )}
+
+              {project.legalstatusotherpov && (
+                <LegalStatusOtherPov value={project.legalstatusotherpov} />
+              )}
+
+              {project.ownershipproofotherpov && (
+                <OwnershipProofOtherPov
+                  value={project.ownershipproofotherpov}
+                />
+              )}
+
               {/* <Fragment>
                 <h5>Contact</h5>
                 {project.contact ? (
@@ -234,6 +255,8 @@ const ProjectDetailPage = ({ match }) => {
             <Segment attached='top'>
               <h5>Location</h5>
             </Segment>
+            {/* TODO: VERIFIER QUE CA MARCHE */}
+            {project.postu && <Postu postu={project.postu} />}
             <Segment attached='bottom'>
               <div id='map' style={{ width: '100%', height: '300px' }}></div>
 
@@ -250,9 +273,14 @@ const ProjectDetailPage = ({ match }) => {
                 </>
               )}
 
-              <SacredPlace value={project.sacredplaces} />
+              {/* <SacredPlace value={project.sacredplaces} /> */}
+
+              {/* TODO:A Tester */}
+              {project.culturalevidence && (
+                <CulturalEvidence value={project.culturalevidence} />
+              )}
               <WaterSprings value={project.waterspring} />
-              <ClanLinearity value={project.clanlinearity} />
+              {/* <ClanLinearity value={project.clanlinearity} /> */}
 
               {project.impactedhouseholds > 0 && (
                 <>

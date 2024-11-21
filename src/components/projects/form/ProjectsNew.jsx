@@ -230,28 +230,35 @@ class ProjectsNew extends Component {
                         initialValues={{
                           name: '',
                           status: '',
+                          // municipality: '',
+                          postu: '',
                           areatype: '',
                           landtype: '',
                           landlocation: '',
-                          sacredplaces: false,
+                          // sacredplaces: false,
+                          culturalevidence: '',
                           watersprings: false,
                           commodities: '',
-                          clanlinearity: '',
+                          // clanlinearity: '',
                           yearstart: 0,
                           actors: '',
                           secondaryactors: '',
                           legalstatusfarmerspov: '',
-                          ownershipprooffarmersp: '',
+                          ownershipprooffarmerspov: '',
+                          juridicsituationclaiming: '',
+                          legalstatusotherpov: '',
+                          ownershipproofotherpov: '',
+                          juridicsituationotherpov: '',
                           conflicthistory: '',
                           conflictarea: 0,
                           impactedhouseholds: 0,
                           impactedmen: 0,
                           impactedwomen: 0,
-                          impactedkids: 0,
+                          // impactedkids: 0,
                           impactedyouth: 0,
                           impacteddisabled: 0,
                           futureplans: '',
-                          govrespectslaw: false,
+                          // govrespectslaw: false,
                           plannedcompensation: '',
                           ksisupportstart: 0,
                           ksisupporttype: '',
@@ -266,20 +273,23 @@ class ProjectsNew extends Component {
                           if (this.state.action === 'add') {
                             arrDraw[0].set('name', values.name);
                             arrDraw[0].set('status', values.status);
+                            // arrDraw[0].set('municipality', values.municipality);
+                            arrDraw[0].set('postu', values.postu);
                             arrDraw[0].set('areatype', values.areatype);
                             arrDraw[0].set('landtype', values.landtype);
                             arrDraw[0].set('landlocation', values.landlocation);
-                            arrDraw[0].set('sacredplaces', values.sacredplaces);
+                            // arrDraw[0].set('sacredplaces', values.sacredplaces);
+                            arrDraw[0].set(
+                              'culturalevidence',
+                              values.culturalevidence
+                            );
                             arrDraw[0].set('watersprings', values.watersprings);
                             arrDraw[0].set('commodities', values.commodities);
-                            arrDraw[0].set(
-                              'clanlinearity',
-                              values.clanlinearity
-                            );
-                            arrDraw[0].set(
-                              'clanlinearity',
-                              values.clanlinearity
-                            );
+                            // arrDraw[0].set(
+                            //   'clanlinearity',
+                            //   values.clanlinearity
+                            // );
+
                             arrDraw[0].set('yearstart', values.yearstart);
                             arrDraw[0].set('actors', values.actors);
                             arrDraw[0].set(
@@ -290,10 +300,29 @@ class ProjectsNew extends Component {
                               'legalstatusfarmerspov',
                               values.legalstatusfarmerspov
                             );
+
                             arrDraw[0].set(
                               'ownershipprooffarmerspov',
                               values.ownershipprooffarmerspov
                             );
+
+                            arrDraw[0].set(
+                              'juridicsituationclaiming',
+                              values.juridicsituationclaiming
+                            );
+                            arrDraw[0].set(
+                              'legalstatusotherpov',
+                              values.legalstatusotherpov
+                            );
+                            arrDraw[0].set(
+                              'ownershipprooffarmerspov',
+                              values.ownershipproofotherpov
+                            );
+                            arrDraw[0].set(
+                              'juridicsituationotherpov',
+                              values.juridicsituationotherpov
+                            );
+
                             arrDraw[0].set(
                               'conflicthistory',
                               values.conflicthistory
@@ -312,7 +341,7 @@ class ProjectsNew extends Component {
                               'impactedwomen',
                               values.impactedwomen
                             );
-                            arrDraw[0].set('impactedkids', values.impactedkids);
+                            // arrDraw[0].set('impactedkids', values.impactedkids);
                             arrDraw[0].set(
                               'impactedyouth',
                               values.impactedyouth
@@ -322,10 +351,10 @@ class ProjectsNew extends Component {
                               values.impacteddisabled
                             );
                             arrDraw[0].set('futureplans', values.futureplans);
-                            arrDraw[0].set(
-                              'govrespectslaw',
-                              values.govrespectslaw
-                            );
+                            // arrDraw[0].set(
+                            //   'govrespectslaw',
+                            //   values.govrespectslaw
+                            // );
                             arrDraw[0].set(
                               'plannedcompensation',
                               values.plannedcompensation
