@@ -4,6 +4,7 @@ import { Grid, Breadcrumb, Placeholder, Segment } from 'semantic-ui-react';
 import { ProjectsList } from './ProjectsList';
 import { ProjectsSidebar } from './ProjectsSidebar';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
+import { startCase } from 'lodash';
 
 const Projets = (props) => {
   // Hooks to local state
@@ -52,31 +53,27 @@ const Projets = (props) => {
 
     // Filter with search bar value
     if (search !== '') {
-      filteredProjects = filteredProjects.filter(
-        (project) =>
-          project.properties.name_project
-            .toLowerCase()
-            .includes(search.toLowerCase()) ||
-          project.properties.country
-            .toLowerCase()
-            .includes(search.toLowerCase())
-      );
+      filteredProjects = filteredProjects.filter((project) => {
+        return project.properties.name
+          .toLowerCase()
+          .includes(search.toLowerCase());
+      });
     }
 
     console.log(filteredProjects);
 
     // Filter with selected category
     //TODO Review this once I add commodities in the form
-    if (filterCategory !== '') {
-      filteredProjects = filteredProjects.filter(
-        (project) =>
-          project.properties.commodities &&
-          project.properties.commodities
-            .replace(/,/g, ' ')
-            .toLowerCase()
-            .includes(filterCategory.toLowerCase())
-      );
-    }
+    // if (filterCategory !== '') {
+    //   filteredProjects = filteredProjects.filter(
+    //     (project) =>
+    //       project.properties.commodities &&
+    //       project.properties.commodities
+    //         .replace(/,/g, ' ')
+    //         .toLowerCase()
+    //         .includes(filterCategory.toLowerCase())
+    //   );
+    // }
     return filteredProjects;
   };
 
